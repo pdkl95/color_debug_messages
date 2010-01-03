@@ -5,8 +5,8 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "color_debug_messages"
-    gem.summary = %Q{Easy to read output on STDOUT}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = "Easy to read output on STDOUT"
+    gem.description = "Module to add colorful debug messages to a class."
     gem.email = "gem-color_debug_messages@thoughtnoise.net"
     gem.homepage = "http://github.com/pdkl95/color_debug_messages"
     gem.authors = ["Brent Sanders"]
