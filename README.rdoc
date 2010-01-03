@@ -1,17 +1,54 @@
-= color_debug_messages
+=begin
 
-Description goes here.
+= NAME
 
-== Note on Patches/Pull Requests
- 
-* Fork the project.
-* Make your feature addition or bug fix.
-* Add tests for it. This is important so I don't break it in a
-  future version unintentionally.
-* Commit, do not mess with rakefile, version, or history.
-  (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
-* Send me a pull request. Bonus points for topic branches.
+Color Debug Messages - A way to add nicer output to your script.
 
-== Copyright
+= DESCRIPTION
+
+I got tired of plain output on STDOUT, and wanted a nicer way
+to add debug/informational messages to my scripts. This works
+with the idea that it is easier for our eyes to notice changes
+in color than changes in glyph/shape. A red error message is
+notices more easily than a "*****" prefix or similar.
+
+To get this effect, we rely on Term::ANSIColor
+
+== Install
+
+  gem install pdkl95-color_debug_messages --source http://gems.github.com
+
+== Usage
+
+The basic use of this script is very simple - you just include
+the module into your class, and call the various "puts" wrappers.
+
+    class Foo
+      include ColorDebugMessages
+      def bar(baz)
+        debug "This is a debug message!"
+      end
+    end
+
+Which produces:
+
+=end rdoc
+
+=begin html
+
+<p>
+    <span style="color: #0FF">[Foo#bar]</span> &gt;&gt;&gt; This is a debug message!
+</p>
+
+=end html
+
+=begin rdoc
+
+asdf
+aaaasdf
+
+= COPYRIGHT
 
 Copyright (c) 2010 Brent Sanders. See LICENSE for details.
+
+=end rdoc
