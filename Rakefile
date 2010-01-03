@@ -10,8 +10,7 @@ begin
     gem.email = "gem-color_debug_messages@thoughtnoise.net"
     gem.homepage = "http://github.com/pdkl95/color_debug_messages"
     gem.authors = ["Brent Sanders"]
-    gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
+    gem.add_development_dependency "term-ansicolor", ">= 1.0.4"
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
