@@ -2,19 +2,6 @@ require 'term/ansicolor'
 
 # Include this module into your class to get access to the
 # debug helper functions.
-#
-#=end
-#
-#=begin html
-#
-#<p>
-#    <span style="color: #0FF">[Foo#bar]</span> &gt;&gt;&gt; This is a debug message!
-#</p>
-#
-#=end html
-#
-#=begin
-
 module ColorDebugMessages
   # if you specify nothing else, you get full-messages, nothing hidden
   DEFAULT_DEBUG_FLAGS = {

@@ -1,5 +1,3 @@
-=begin
-
 = NAME
 
 Color Debug Messages - A way to add nicer output to your script.
@@ -32,23 +30,31 @@ the module into your class, and call the various "puts" wrappers.
 
 Which produces:
 
-=end rdoc
+    [Foo#bar] >>> This is a debug message!
 
-=begin html
+The part in square-brackets at the beginning will be in read, which
+I unfortunately am having a hard time making RDoc produce.
 
-<p>
-    <span style="color: #0FF">[Foo#bar]</span> &gt;&gt;&gt; This is a debug message!
-</p>
+The available message types, by default, are:
+    
+    debug(msg)  # ">>>" prefix, in cyan
+    warn(msg)   # "**>" prefix, in red
+    info(msg)   # "-->" prefix, in green
 
-=end html
+These can be changed by adding lines like this to the top of your class:
 
-=begin rdoc
+    class Foo
+      include ColorDebugMessages
+      color_debug_message_type :quux, '~', :blue
 
-asdf
-aaaasdf
+      def bar
+        quux "Test message!"
+      end
+    end
+
+Which will produce yellow output, with the <tt>"~~>"</tt> prefix instead.
 
 = COPYRIGHT
 
 Copyright (c) 2010 Brent Sanders. See LICENSE for details.
 
-=end rdoc
