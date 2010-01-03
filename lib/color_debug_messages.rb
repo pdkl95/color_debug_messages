@@ -16,43 +16,41 @@ module ColorDebugMessages
   # of flags. For example, to only have 'info' and 'warn' level
   # messages, with only class names and no function names, you could do:
   #
-  #     ColorDebugMessages.debug_flags = {
+  #     ColorDebugMessages.global_debug_flags({
   #       :debug      => false,
   #       :class_only => true
-  #     }
+  #     })
   #
   # The hash is merged with the existing one, so it is not necessary
   # to name things that are already set the way you want.
-  def self.debug_flags=(opts)
-    debug_flags.merge! opts
+  def self.global_debug_flags(new_flags=nil)
+    @global_debug_flags ||= DEFAULT_DEBUG_FLAGS
+    @global_debug_flags.merge!(new_flags) if new_flags
+    @global_debug_flags
   end
-  
-  # returns the global flags
-  def self.debug_flags
-    @debug_flags ||= DEFAULT_DEBUG_FLAGS
+
+  def self.global_flag_active?(name)
+    global_debug_flags[name]
   end
   
   # This is the same as ColorDebugMessages#debug_flags but on a
   # per-instance level, if you need to locally change things for some
   # reason. This hash starts out blank, and any missing entries are
   # looked up in the global hash.  
-  def debug_flags=(opts)
-    debug_flags.merge! opts
+  def debug_flags(new_flags=nil)
+    @local_debug_flags ||= Hash.new
+    @local_debug_flags = new_flags if new_flags
+    @local_debug_flags
   end
 
-  # returns the per-instance flag overrides
-  def debug_flags
-    @color_debug_message_options ||= Hash.new
-  end
-  
   # returns +true+ if the flag is true in either the local instance
   # or the global hash.
   def debug_flag_active?(name)
     if debug_flags.has_key?(name)
-      debug_flags
+      debug_flags[name]
     else
-      ColorDebugMessages.debug_flags
-    end[name]
+      ColorDebugMessages.global_debug_flags[name]
+    end
   end
   
   # returns the prefix to tag on debug messages for a class.
