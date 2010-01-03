@@ -14,7 +14,7 @@ To get this effect, we rely on Term::ANSIColor
 
 == Install
 
-  gem install pdkl95-color_debug_messages --source http://gems.github.com
+  gem install color_debug_messages
 
 == Usage
 
